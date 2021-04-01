@@ -48,14 +48,14 @@ export class ArrayEditor extends React.Component {
 
     // Handler called when one of the elements in object is modified
     //
-    // function onUpdateElement (updatedElement: Object, index: Number) -> void
+    // function onUpdateElement (updatedElement: Object, index: number) -> void
     // where updatedElement is the element that has been updated, and
     // index is the index of updatedElement in the the object prop
     onUpdateElement: PropTypes.func.isRequired,
 
     // Handler called when any elements are removed
     //
-    // function onRemoveElements (indices: [Number]) -> void
+    // function onRemoveElements (indices: [number]) -> void
     // where index is the index of removedElement in the the object prop
     onRemoveElements: PropTypes.func.isRequired,
 

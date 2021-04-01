@@ -92,7 +92,7 @@ export class ObjectEditor<TObject extends Editable> extends React.Component<Base
 export class ArrayEditor<TObject extends Editable> extends React.Component<BaseEditorProps & {
   object?: Array<TObject>,
   onUpdateElement: (object: TObject, index: number) => void,
-  onRemoveElements: (indices: Array<Number>) => void,
+  onRemoveElements: (indices: Array<number>) => void,
   onAddElement: (object: TObject) => void,
   parentVisible?: boolean,
   defaultRowsPerPage?: number,

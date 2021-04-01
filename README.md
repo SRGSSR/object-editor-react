@@ -211,9 +211,9 @@ import { ArrayEditor } from 'object-editor-react';
 | ---  | ---  | ---  | ---       | ---     |
 | `type` | `Schema` | The `Schema` to use when generating the Editor and validating objects. <br> Each element in the array must conform to this `Schema`. <br> Must be a valid `Schema` (an object whose keys are `SchemaType:s`, or a `SchemaType`) | `true` |
 | `object` | `any` | The array to edit. <br> Each element must validate according to the `Schema` passed in the `type` prop. | `false` |
-| `onUpdateElement` | `function` | `function onUpdateElement (updatedElement: Object, updatedIndex: Number) -> void` <br> Handler called when an element in the array is updated <br> The updated element and the index are passed | `true` |
+| `onUpdateElement` | `function` | `function onUpdateElement (updatedElement: Object, updatedIndex: number) -> void` <br> Handler called when an element in the array is updated <br> The updated element and the index are passed | `true` |
 | `onAddElement` | `function` | `function onAddElement (newElement: Object) -> boolean` <br> Handler called when a new element is added to the array <br> If this function returns true, the "add object" row is cleared  | `true` |
-| `onRemoveElements` | `function` | `function onRemoveElements (removedIndices: [Number]) -> void` <br> Handler called when an element in the array is removed <br> The indices of removed elements are passed | `true` |
+| `onRemoveElements` | `function` | `function onRemoveElements (removedIndices: [number]) -> void` <br> Handler called when an element in the array is removed <br> The indices of removed elements are passed | `true` |
 | `className` | `string` | any additional class names for the editor table wrapper | `false` |
 | `icon` | `function` | a function that returns an icon to use for each row in the table | `false` | no icon used |
 
