@@ -2,7 +2,7 @@
   "name": "@srgssr/object-editor-react",
   "version": "1.6.0",
   "description": "A React-based JSON object editor",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
