@@ -1,0 +1,28 @@
+{
+ "name": "@srgssr/object-editor-react",
+ "version": "1.6.0",
+ "description": "A React-based JSON object editor",
+ "main": "index.js",
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/srgssr/object-editor-react.git"
+ },
+ "author": "Bill Granfield <bill@billgranfield.com>",
+ "license": "MIT",
+ "bugs": {
+  "url": "https://github.com/srgssr/object-editor-react/issues"
+ },
+ "homepage": "https://github.com/srgssr/object-editor-react#readme",
+ "dependencies": {
+  "@material-ui/core": "^4.5.1",
+  "@material-ui/icons": "^4.5.1",
+  "classnames": "^2.2.5",
+  "glamor": "^2.20.40",
+  "prop-types": "^15.6.1",
+  "ramda": "^0.26.1",
+  "react": "^16.10.2",
+  "react-addons-update": "^15.6.2",
+  "react-dom": "^16.10.2"
+ },
+ "types": "./index.d.ts"
+}
