@@ -335,7 +335,7 @@ class AddObjectRow extends React.Component {
 
   // Renders the "add element" button
   addButton = () => {
-    return <Button color="primary" variant="outlined" onClick={this.add}>
+    return <Button color="primary" variant="contained" onClick={this.add}>
       New
       <Add/>
     </Button>
