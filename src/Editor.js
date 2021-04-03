@@ -222,7 +222,7 @@ const ArrayToolbar = props => {
   }
 
   return <Toolbar className={`${toolbarDefault} ${toolbarSelected}`}>
-    <Typography variant="subheading">{ props.size } selected</Typography>
+    <Typography variant="h6">{ props.size } selected</Typography>
     <IconButton color="default" aria-label="Delete selected elements" onClick={props.onDeleteAll}>
       <Delete />
     </IconButton>
