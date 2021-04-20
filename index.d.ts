@@ -86,6 +86,7 @@ type Editable = EditablePrimitive | EditableObject | EditableArray
 export class ObjectEditor<TObject extends Editable> extends React.Component<BaseEditorProps & {
   object?: TObject,
   onUpdateElement: (object: TObject) => void,
+  onPreviewElement: (object: TObject) => void,
   parentVisible?: boolean,
 }> {
 }
@@ -93,6 +94,7 @@ export class ObjectEditor<TObject extends Editable> extends React.Component<Base
 export class ArrayEditor<TObject extends Editable> extends React.Component<BaseEditorProps & {
   object?: Array<TObject>,
   onUpdateElement: (object: TObject, index: number) => void,
+  onPreviewElement: (object: TObject, index: number) => void,
   onRemoveElements: (indices: Array<number>) => void,
   onAddElement: (object: TObject) => void,
   parentVisible?: boolean,
