@@ -31,6 +31,7 @@ import * as glamor from 'glamor'
 import Pin from './Pin'
 import { capitalize, cloneMap } from './util'
 import { Box } from '@material-ui/core';
+import { Visibility } from '@material-ui/icons';
 
 const empty = () => null;
 
@@ -164,6 +165,7 @@ export class ArrayEditor extends React.Component {
                 type={this.props.type}
                 object={el}
                 onChange={updated => this.props.onUpdateElement(updated, idx)}
+                onPreview={updated => this.props.onPreviewElement(updated, idx)}
                 onRemove={() => this.handleDeleteElements([idx])}
                 isSelected={this.state.selected.has(idx)}
                 onSelect={() => {
@@ -254,6 +256,11 @@ class ObjectEditor extends React.Component {
     // updatedObject is the current object with updates applied
     onUpdateElement: PropTypes.func.isRequired,
 
+    // Handler called when the object is previewed
+    // function onPreviewElement (previewObject) -> void
+    // previewObject is the current object
+    onPreviewElement: PropTypes.func.isRequired,
+
     // Optimize performance by only creating DOM if the parent is visible
     parentVisible: PropTypes.bool,
   };
@@ -280,6 +287,7 @@ class ObjectEditor extends React.Component {
             type={this.props.type}
             object={this.props.object}
             onChange={this.props.onUpdateElement}
+            onPreview={this.props.onPreviewElement}
             onRemove={empty /* Can't remove a single object */}/>
         </BaseTable>
       </Paper>
@@ -358,6 +366,7 @@ class AddObjectRow extends React.Component {
         trash={this.addButton}
         object={this.state.object}
         onChange={this.updateObject}
+        onPreview={empty}
         onRemove={empty /* unused by this component */}/>
     );
   }
@@ -387,12 +396,18 @@ class StringCell extends React.Component {
 
     return (
       <TableCell className={BaseClassnames.Cell('--value')}>
+        {this.props.type.asText ? <textarea className={inputClasses}
+          type='text'
+          value={this.props.value || ''}
+          required={this.props.type.required}
+          onChange={evt => this.props.onChange(evt.target.value)}/> :
         <input
           className={inputClasses}
           type='text'
           value={this.props.value || ''}
           required={this.props.type.required}
           onChange={evt => this.props.onChange(evt.target.value)}/>
+        }
       </TableCell>
     );
   }
@@ -545,6 +560,27 @@ class ObjectCell extends React.Component {
             return this.props.onChange(el);
           }
         }
+        onPreviewElement={
+          /* This function needs to handle array and object property updates */
+          (el, updatedIndex) => {
+            // Array update
+            if (typeof updatedIndex !== 'undefined') {
+              return this.props.onPreview(
+                update(
+                  arrayValue,
+                  {
+                    [updatedIndex]: {
+                      $set: el,
+                    }
+                  }
+                )
+              );
+            }
+
+            // "set" object property update
+            return this.props.onPreview(el);
+          }
+        }
         onRemoveElements={
           // Tell the consumer an element was removed
           droppedIndices => {
@@ -619,6 +655,12 @@ const ElementRow = props => {
       }
     ));
   };
+  // The preview button
+  const previewButton = (
+    <IconButton color="default" aria-label="Preview" onClick={props.onPreview}>
+      <Visibility />
+    </IconButton>
+  );
 
   // The trash button (if the consumer didn't specify one)
   const trashButton = (
@@ -709,6 +751,10 @@ const ElementRow = props => {
       {renderElementBody()}
 
       <TableCell>
+      {previewButton}
+      </TableCell>
+
+      <TableCell>
         {
           props.trash
             ? props.trash()
@@ -734,6 +780,11 @@ ElementRow.propTypes = {
   //
   // function onChange (updatedElement: Object) -> void
   onChange: PropTypes.func.isRequired,
+
+  // Handler called when the element is previewed
+  //
+  // function onPreview (previewElement: Object) -> void
+  onPreview: PropTypes.func.isRequired,
 
   // Handler called when the user clicks the remove button
   // Called with no arguments

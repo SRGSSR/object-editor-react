@@ -18,7 +18,7 @@ const APP_ROOT = document.getElementById('root')
 // A deeply nested test schema
 const schema = {
     foo: Schema.SchemaTypes.string({ required: true }),
-
+    fooText: Schema.SchemaTypes.string( {asText: true}),
     bar: Schema.SchemaTypes.number(),
 
     baz: {
@@ -92,6 +92,10 @@ class Wrapper extends React.Component {
         return true;
     };
 
+    preview(newObject, objectIndex) {
+      console.log('object: ', [ ...this.state.object, newObject ][objectIndex])
+    }
+
     // Handler called when an element is removed.
     remove (removedIndices) {
       const wasRemovedByIndex = util.keyBy(R.identity, removedIndices)
@@ -118,6 +122,7 @@ class Wrapper extends React.Component {
             object={this.state.object}
             type={this.props.type}
             onUpdateElement={this.change.bind(this)}
+            onPreviewElement={this.preview.bind(this)}
             onAddElement={this.add.bind(this)}
             onRemoveElements={this.remove.bind(this)}/>
 
