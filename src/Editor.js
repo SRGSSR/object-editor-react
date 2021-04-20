@@ -54,6 +54,11 @@ export class ArrayEditor extends React.Component {
     // index is the index of updatedElement in the the object prop
     onUpdateElement: PropTypes.func.isRequired,
 
+     // Handler called when the object is previewed
+    // function onPreviewElement (previewObject: Object, index: number) -> void
+    // previewObject is the current object
+    onPreviewElement: PropTypes.func.isRequired,
+
     // Handler called when any elements are removed
     //
     // function onRemoveElements (indices: [number]) -> void
