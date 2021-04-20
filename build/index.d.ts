@@ -1,39 +1,40 @@
 import * as React from 'react'
 
-type IsRequiredOption = {
+type IsRequiredOrAsTextOption = {
   required?: boolean,
+  asText?: boolean,
 }
 
 type BaseSchemaType<TOptions> = ((x: unknown) => boolean)
   & { _isSchemaType: true, _type: string, } & TOptions
 type SchemaTypeFactory<TOptions> = (options?: TOptions) => BaseSchemaType<TOptions>
 
-type StringSchemaTypeFactory = SchemaTypeFactory<IsRequiredOption>
-type StringSchemaType = BaseSchemaType<IsRequiredOption>
+type StringSchemaTypeFactory = SchemaTypeFactory<IsRequiredOrAsTextOption>
+type StringSchemaType = BaseSchemaType<IsRequiredOrAsTextOption>
 
-type BooleanSchemaTypeFactory = SchemaTypeFactory<IsRequiredOption>
-type BooleanSchemaType = BaseSchemaType<IsRequiredOption>
+type BooleanSchemaTypeFactory = SchemaTypeFactory<IsRequiredOrAsTextOption>
+type BooleanSchemaType = BaseSchemaType<IsRequiredOrAsTextOption>
 
-type NumberSchemaTypeFactory = SchemaTypeFactory<IsRequiredOption>
-type NumberSchemaType = BaseSchemaType<IsRequiredOption>
+type NumberSchemaTypeFactory = SchemaTypeFactory<IsRequiredOrAsTextOption>
+type NumberSchemaType = BaseSchemaType<IsRequiredOrAsTextOption>
 
-type FunctionSchemaTypeFactory = SchemaTypeFactory<IsRequiredOption>
-type FunctionSchemaType = BaseSchemaType<IsRequiredOption>
+type FunctionSchemaTypeFactory = SchemaTypeFactory<IsRequiredOrAsTextOption>
+type FunctionSchemaType = BaseSchemaType<IsRequiredOrAsTextOption>
 
-type DateSchemaTypeFactory = SchemaTypeFactory<IsRequiredOption>
-type DateSchemaType = BaseSchemaType<IsRequiredOption>
+type DateSchemaTypeFactory = SchemaTypeFactory<IsRequiredOrAsTextOption>
+type DateSchemaType = BaseSchemaType<IsRequiredOrAsTextOption>
 
-type ArraySchemaTypeFactory = SchemaTypeFactory<IsRequiredOption>
-type ArraySchemaType = BaseSchemaType<IsRequiredOption>
+type ArraySchemaTypeFactory = SchemaTypeFactory<IsRequiredOrAsTextOption>
+type ArraySchemaType = BaseSchemaType<IsRequiredOrAsTextOption>
 
-type AnyObjectSchemaTypeFactory = SchemaTypeFactory<IsRequiredOption>
-type AnyObjectSchemaType = BaseSchemaType<IsRequiredOption>
+type AnyObjectSchemaTypeFactory = SchemaTypeFactory<IsRequiredOrAsTextOption>
+type AnyObjectSchemaType = BaseSchemaType<IsRequiredOrAsTextOption>
 
-type ArrayOfSchemaTypeFactory = (type: SchemaType) => SchemaTypeFactory<IsRequiredOption>
-type ArrayOfSchemaType = BaseSchemaType<IsRequiredOption>
+type ArrayOfSchemaTypeFactory = (type: SchemaType) => SchemaTypeFactory<IsRequiredOrAsTextOption>
+type ArrayOfSchemaType = BaseSchemaType<IsRequiredOrAsTextOption>
 
-type AnySchemaTypeFactory = SchemaTypeFactory<IsRequiredOption>
-type AnySchemaType = BaseSchemaType<IsRequiredOption>
+type AnySchemaTypeFactory = SchemaTypeFactory<IsRequiredOrAsTextOption>
+type AnySchemaType = BaseSchemaType<IsRequiredOrAsTextOption>
 
 interface ObjectSchemaType {
   [key: string]: SchemaType,
