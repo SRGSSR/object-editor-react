@@ -3,3 +3,7 @@
 * {
   font-family: 'Open Sans', sans-serif;
 }
+
+.editor__row.editor__row--array {
+  vertical-align: top;
+}
