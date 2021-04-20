@@ -1,6 +1,6 @@
 {
  "name": "@srgssr/object-editor-react",
- "version": "1.6.0",
+ "version": "1.2.1",
  "description": "A React-based JSON object editor",
  "main": "build/index.js",
  "repository": {
