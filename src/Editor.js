@@ -660,12 +660,6 @@ const ElementRow = props => {
       }
     ));
   };
-  // The preview button
-  const previewButton = (
-    <IconButton color="default" aria-label="Preview" onClick={props.onPreview}>
-      <Visibility />
-    </IconButton>
-  );
 
   // The trash button (if the consumer didn't specify one)
   const trashButton = (
@@ -763,10 +757,6 @@ const ElementRow = props => {
               * For a primitive, a single cell.
               */}
       {renderElementBody()}
-
-      <TableCell>
-      {previewButton}
-      </TableCell>
 
       <TableCell>
         {
