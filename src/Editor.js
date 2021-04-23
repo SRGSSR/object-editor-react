@@ -669,9 +669,18 @@ const ElementRow = props => {
 
   // The trash button (if the consumer didn't specify one)
   const trashButton = (
-    <IconButton color="default" aria-label="Delete element" onClick={props.onRemove}>
-      <Delete />
-    </IconButton>
+    <Box>
+      <Box>
+        <IconButton color="default" aria-label="Preview" onClick={props.onPreview}>
+        <Visibility />
+      </IconButton>
+      </Box>
+      <Box>
+      <IconButton color="default" aria-label="Delete element" onClick={props.onRemove}>
+        <Delete />
+      </IconButton>
+      </Box>
+    </Box>
   );
 
   // Render a cell based on a primitive SchemaType, a value, and a handler
